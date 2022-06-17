@@ -1,12 +1,12 @@
 //Before using make sure to copy the Garbage.ijm macro into the macro folder in order to remove the memory leaks
 //Also before using, go to Bio-Foramts Plugin Configuration, go to Formats tab, find TIFF (tagged image file format) and uncheck enable
 //save location. Need to change this depending on the computer and intention
-input="E:/Itch Project/#463 1-7-22 (Control CQ+4880)/final FOV/To be Split/Test/" //where the files to process are located
+input="E:/project/exp/raw files to be split/" //where the files to process are located
 Path="E:/ImageJ Macro Output/"; // save location of processed files
 zstacks=5; //user input required 
 channels=2; //user input required
 //Remove any Z-planes (e.g. flyback issues)? Enter the relevant values here. This assumes 2 channels.
-RemoveZplanes=1    ///set to 0 to keep all z-planes, set to 1 to enable the z-plane remover
+RemoveZplanes=0    ///set to 0 to keep all z-planes, set to 1 to enable the z-plane remover
 KeepStackStart=2  ////this the first plane that it keeps
 KeepStackEnd=5   ///this is the last plane that it keeps
 

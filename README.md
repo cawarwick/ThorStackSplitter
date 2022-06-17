@@ -9,14 +9,19 @@ To do before using the macro:
 The garbage.ijm macro clears unused but occupied RAM use. ImageJ has some bad memory management and it leaks RAM. For some reason running the garbage collection from inside the macro doesn't always work so launching an external macro seems to more consistently clear RAM 
 
 2. Disable the Bio-Formats Plugin importer. Go to Bio-Formats Plugin Importer Configuration, go to Formats tab, find TIFF (tagged image file format) and uncheck enable. 
+![image](https://user-images.githubusercontent.com/81972652/174402159-72164825-3a24-468e-810c-cd80dd388a9d.png)
 
 If this is turned on, it will launch each time the macro tries to open a file and will pause until there is user input to confirm how to import it, for fully autonomous processing leave this turned off, but you can always just keep a stock copy of Fiji if you use this function.
 ________________________________________________________________________________________
-User provided information for running the macro (Located at the top of the macro when opened in FIJI)
+User provided information for running the macro os located at the top of the macro when opened in FIJI.
+For example:
+![image](https://user-images.githubusercontent.com/81972652/174402485-e8a77311-daa6-4556-a7fa-1c58c6b3d3c4.png)
 
-Input=”C:/path/to/where/the tiffs are/”
+These are the folllowing variables you will need to change to run the macro.
 
-Path=”C:/path/to/where/you/want the tiffs saved”
+Input=”C:/path/to/where/the tiffs are/”   (note the forward slashes, if you copy from Windows Explorer they are back slashes)
+
+Path=”C:/path/to/where/you/want the tiffs saved/”    (Also note the forward slash at the end, this says to look in that folder, otherwise it things it's a file)
 
 Zstacks= number of z-stacks in the source file
 

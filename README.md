@@ -21,7 +21,8 @@ These are the folllowing variables you will need to change to run the macro.
 
 Input=”C:/path/to/where/the tiffs are/”   (note the forward slashes, if you copy from Windows Explorer they are back slashes)
 
-Path=”C:/path/to/where/you/want the tiffs saved/”    (Also note the forward slash at the end, this says to look in that folder, otherwise it things it's a file)
+Path=”C:/path/to/where/you/want the tiffs saved/”    (Also note the forward slash at the end, this says to look in that folder, otherwise it things it's a file.)
+Your output folder (i.e. Path variable) should NOT be nestled within the Input folder as it will see the folder as an extra file. Put it anywhere else.)
 
 Zstacks= number of z-stacks in the source file
 

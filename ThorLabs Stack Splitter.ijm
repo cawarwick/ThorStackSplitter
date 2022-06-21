@@ -1,7 +1,7 @@
 //Before using make sure to copy the Garbage.ijm macro into the macro folder in order to remove the memory leaks
 //Also before using, go to Bio-Foramts Plugin Configuration, go to Formats tab, find TIFF (tagged image file format) and uncheck enable
 //save location. Need to change this depending on the computer and intention
-input="E:/project/exp/raw files to be split/" //where the files to process are located
+input="E:/project/exp/raw files to be split/" //where the files to process are located. Make sure they are forward slashes and it ends with a forward slash.
 Path="E:/ImageJ Macro Output/"; // save location of processed files
 zstacks=5; //user input required 
 channels=2; //user input required
@@ -24,7 +24,7 @@ for (i=0; i<list.length; i++) {
 	Y=getInfo("window.title");
 	print("Name of file opened:",Y);
 	eos=lengthOf(Y);
-	sos=eos-4;
+	sos=eos-8;
 	Z=substring(Y, 0,sos);
 	print("Trimmed file name:",Z);
 	OG_filename=File.name;
@@ -32,7 +32,7 @@ for (i=0; i<list.length; i++) {
 	
 	//Rearrange the stacks from XYZTC into a more common XYCZT
 	run("Stack Splitter", "number=2");  //For ThorImage, first half is Gcamp, second half is red channel
-	close("#*");
+	close(file);
 	runMacro("Garbage");
 	B="stk_0001_"+OG_filename;
 	C="stk_0002_"+OG_filename;

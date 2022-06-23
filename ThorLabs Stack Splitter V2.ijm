@@ -17,7 +17,9 @@ for (i=0; i<list.length; i++) {
 	print("Name of file:",list[i]);
 	print("Working on file number:",i);
 	file=list[i];
-	npath=input+file;
+	tempfile=input+" "+list[i];
+	File.rename(input+list[i], tempfile);
+	npath=tempfile;
 	print("Opening 1st file from:",npath);
 	open(npath);
 		//Get the file info before messing with it
@@ -25,20 +27,21 @@ for (i=0; i<list.length; i++) {
 	print("Name of file opened:",Y);
 	eos=lengthOf(Y);
 	sos=eos-8;
-	Z=substring(Y, 0,sos);
+	Z=substring(Y, 1,sos);
 	print("Trimmed file name:",Z);
 	OG_filename=File.name;
 	Stack.getDimensions(Wd,Ht,Ch,Sl,F);
 	
 	//Rearrange the stacks from XYZTC into a more common XYCZT
 	run("Stack Splitter", "number=2");  //For ThorImage, first half is Gcamp, second half is red channel
-	close(file);
+	close(" "+file);
 	runMacro("Garbage");
 	B="stk_0001_"+OG_filename;
 	C="stk_0002_"+OG_filename;
 	run("Interleave", "stack_1=C stack_2=B"); //interleaving the two channels to make it XYCZT
 	Stack.getDimensions(Wd,Ht,Ch,Sl,F);
 	close("Stk*");
+	File.rename(tempfile, input+list[i]);
 	runMacro("Garbage");
 	
 	//remove blank frames from end of recording
@@ -89,6 +92,7 @@ for (i=0; i<list.length; i++) {
 	
 	//Breaking large images into pieces that are less than 4 gigabytes per file
 	Size=getValue("image.size");//get image size in gb
+	Stack.getDimensions(Wd,Ht,Ch,Sl,F);
 	print("Sl",Sl);
 	print("F",F);
 	F=Sl*F*Ch;

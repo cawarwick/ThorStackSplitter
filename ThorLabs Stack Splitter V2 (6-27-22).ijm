@@ -1,10 +1,10 @@
 //Before using make sure to copy the Garbage.ijm macro into the macro folder in order to remove the memory leaks
 //Also before using, go to Bio-Foramts Plugin Configuration, go to Formats tab, find TIFF (tagged image file format) and uncheck enable
 //save location. Need to change this depending on the computer and intention
-input="E:/project/exp/raw files to be split/" //where the files to process are located. Make sure they are forward slashes and it ends with a forward slash.
-Path="E:/ImageJ Macro Output/"; // save location of processed files
+input="D:/Abby/#3_07122022/try/" //where the files to process are located. Make sure they are forward slashes and it ends with a forward slash.
+Path="D:/Abby/#3_07122022/"; // save location of processed files
 zstacks=5; //user input required 
-channels=2; //user input required
+channels=1; //user input required
 //Remove any Z-planes (e.g. flyback issues)? Enter the relevant values here. This assumes 2 channels.
 RemoveZplanes=0    ///set to 0 to keep all z-planes, set to 1 to enable the z-plane remover
 KeepStackStart=2  ////this the first plane that it keeps
@@ -33,12 +33,19 @@ for (i=0; i<list.length; i++) {
 	Stack.getDimensions(Wd,Ht,Ch,Sl,F);
 	
 	//Rearrange the stacks from XYZTC into a more common XYCZT
-	run("Stack Splitter", "number=2");  //For ThorImage, first half is Gcamp, second half is red channel
-	close(" "+file);
-	runMacro("Garbage");
-	B="stk_0001_"+OG_filename;
-	C="stk_0002_"+OG_filename;
-	run("Interleave", "stack_1=C stack_2=B"); //interleaving the two channels to make it XYCZT
+	//add if statements - split stack and interleave only when channels = 2 
+	if (channels == 2){
+		run("Stack Splitter", "number=2");  //For ThorImage, first half is Gcamp, second half is red channel
+		close(" "+file);
+		runMacro("Garbage");
+		B="stk_0001_"+OG_filename;
+		C="stk_0002_"+OG_filename;
+		run("Interleave", "stack_1=C stack_2=B");//interleaving the two channels to make it XYCZT
+	}
+	if (channels == 1){
+		runMacro("Garbage");
+		rename("Combined Stacks");
+		}
 	Stack.getDimensions(Wd,Ht,Ch,Sl,F);
 	close("Stk*");
 	File.rename(tempfile, input+list[i]);

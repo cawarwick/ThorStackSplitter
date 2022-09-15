@@ -21,6 +21,16 @@ These are the folllowing variables you will need to change to run the macro.
 
 Input=”C:/path/to/where/the tiffs are/”   (note the forward slashes, if you copy from Windows Explorer they are back slashes)
 
+The files should be consistently labeled, e.g. if using a _001, _002, nomenclature ensure the 0th file also has a _000. 
+When using a bulk rename the Original file is not given an appended file name which messed up the saving. 
+
+This is bad:
+![image](https://user-images.githubusercontent.com/81972652/190514223-c4f5099f-5773-4509-92ae-67089f3c8b80.png)
+
+This is good:
+![image](https://user-images.githubusercontent.com/81972652/190513916-c32cd0ae-2af4-4ff3-8cb5-a129119e47f3.png)
+
+
 Path=”C:/path/to/where/you/want the tiffs saved/”    (Also note the forward slash at the end, this says to look in that folder, otherwise it things it's a file.)
 Your output folder (i.e. Path variable) should NOT be nestled within the Input folder as it will see the folder as an extra file. Put it anywhere else.)
 

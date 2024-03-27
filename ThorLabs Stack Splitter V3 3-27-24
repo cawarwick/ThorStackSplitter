@@ -7,7 +7,7 @@ zstacks=5; //user input required
 channels=2; //user input required
 //Remove any Z-planes (e.g. flyback issues)? Enter the relevant values here. This assumes 2 channels.
 RemoveZplanes=0    ///set to 0 to keep all z-planes, set to 1 to enable the z-plane remover
-KeepStackStart=2  ////this the first plane that it keeps
+KeepStackStart=2  ////this the first plane that it keeps  (starting at 1)
 KeepStackEnd=5   ///this is the last plane that it keeps
 
 runMacro("Garbage");

@@ -22,7 +22,7 @@ These are the folllowing variables you will need to change to run the macro.
 Input=”C:/path/to/where/the tiffs are/”   (note the forward slashes, if you copy from Windows Explorer they are back slashes)
 
 The files should be consistently labeled, e.g. if using a _001, _002, nomenclature ensure the 0th file also has a _000. 
-When using a bulk rename the Original file is not given an appended file name which messed up the saving. 
+When using a bulk rename the Original file is not given an appended file name which messed up the saving. They don't need to be contigous (e.g. 001 002 003, but they do all need to be formatted with a _xxx)
 
 This is bad:
 ![image](https://user-images.githubusercontent.com/81972652/190514223-c4f5099f-5773-4509-92ae-67089f3c8b80.png)
